@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadia Ajmal — SOC Analyst</title>
+<meta name="description" content="Portfolio of Nadia Ajmal, SOC Analyst specializing in security monitoring, incident response and SIEM (FortiSIEM, Splunk). CompTIA Security+, CEH, CSA certified.">
+<meta property="og:title" content="Nadia Ajmal — SOC Analyst">
+<meta property="og:description" content="Security monitoring, incident response and SIEM. CompTIA Security+, CEH, CSA, Fortinet certified.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --panel:#111821;
+    --panel-2:#151e29;
+    --line:#1f2b39;
+    --text:#d7e0ea;
+    --muted:#8596a8;
+    --accent:#2ee6a6;
+    --accent-2:#4cc9f0;
+    --warn:#ffb454;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(46,230,166,.08), transparent 60%),
+      radial-gradient(700px 400px at -10% 30%, rgba(76,201,240,.06), transparent 60%);
+  }
+  a{color:var(--accent-2);text-decoration:none}
+  a:hover{color:var(--accent)}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,15,20,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--text);font-size:15px}
+  .brand span{color:var(--accent)}
+  .nav ul{display:flex;gap:26px;list-style:none}
+  .nav ul a{color:var(--muted);font-size:14px;font-family:'IBM Plex Mono',monospace}
+  .nav ul a:hover{color:var(--accent)}
+  .status{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(46,230,166,.6);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(46,230,166,0)}100%{box-shadow:0 0 0 0 rgba(46,230,166,0)}}
+
+  /* HERO */
+  .hero{padding:96px 0 72px}
+  .prompt{font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:14px;margin-bottom:18px}
+  .prompt .c{color:var(--muted)}
+  h1{font-size:clamp(40px,7vw,68px);line-height:1.05;letter-spacing:-.02em;font-weight:700}
+  h1 em{font-style:normal;color:var(--accent)}
+  .role{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:clamp(15px,2.2vw,19px);color:var(--accent-2)}
+  .role .cursor{display:inline-block;width:9px;height:1.1em;background:var(--accent);vertical-align:-3px;margin-left:4px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .lead{margin-top:26px;max-width:680px;color:var(--text);font-size:17px}
+  .cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;border-radius:8px;font-weight:600;font-size:14px;
+    border:1px solid var(--line);color:var(--text);background:var(--panel);
+    transition:.2s;
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+  .btn.primary{background:var(--accent);color:#04120d;border-color:var(--accent)}
+  .btn.primary:hover{background:#5af0be;color:#04120d}
+
+  .stats{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .stat b{display:block;font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--accent)}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  /* SECTIONS */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px}
+  .sec-head .n{font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:14px}
+  .sec-head h2{font-size:30px;letter-spacing:-.01em}
+  .sec-head .rule{flex:1;height:1px;background:var(--line)}
+
+  .about p{max-width:760px;color:var(--text);margin-bottom:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+    padding:6px 12px;border-radius:999px;
+    background:var(--panel);border:1px solid var(--line);color:var(--accent-2);
+  }
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .job{position:relative;margin-bottom:38px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+  .job::before{
+    content:"";position:absolute;left:-28px;top:32px;width:11px;height:11px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--accent);
+  }
+  .job .when{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent)}
+  .job h3{font-size:21px;margin-top:6px}
+  .job .org{color:var(--muted);font-size:14.5px;margin-top:2px}
+  .job ul{margin-top:16px;padding-left:18px;color:var(--text)}
+  .job li{margin-bottom:8px;font-size:15px}
+  .job li::marker{color:var(--accent)}
+
+  /* SKILLS */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}
+  .card h3{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+  .card .chips{margin-top:0}
+
+  /* CERTS */
+  .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .cert{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;
+    display:flex;gap:16px;align-items:flex-start;transition:.2s;
+  }
+  .cert:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .badge{
+    flex:none;width:46px;height:46px;border-radius:10px;
+    display:grid;place-items:center;
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;
+    background:rgba(46,230,166,.1);color:var(--accent);border:1px solid rgba(46,230,166,.3);
+  }
+  .cert h4{font-size:16px;line-height:1.3}
+  .cert p{font-size:13px;color:var(--muted);margin-top:4px;font-family:'IBM Plex Mono',monospace}
+
+  /* EDU */
+  .edu{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+  .edu h3{font-size:20px}
+  .edu p{color:var(--muted);margin-top:4px}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact h2{font-size:clamp(30px,5vw,44px);letter-spacing:-.02em}
+  .contact p{color:var(--muted);max-width:520px;margin:14px auto 30px}
+  .contact .cta{justify-content:center}
+  footer{padding:30px 0;border-top:1px solid var(--line);text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .dot,.cursor{animation:none}
+    html{scroll-behavior:auto}
+  }
+
+  @media (max-width:760px){
+    .nav ul,.status{display:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .hero{padding:64px 0 48px}
+    section{padding:52px 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">nadia<span>@</span>soc:~$</a>
+    <ul>
+      <li><a href="#about">about</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#certifications">certs</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <div class="status"><span class="dot"></span> OPEN TO OPPORTUNITIES</div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div class="prompt">$ whoami <span class="c">// security analyst profile</span></div>
+      <h1>Nadia <em>Ajmal</em></h1>
+      <div class="role">SOC Analyst — Threat detection &amp; incident response<span class="cursor"></span></div>
+      <p class="lead">
+        I monitor security events, investigate incidents and tune detection so threats are caught early and handled fast.
+        Over a year of hands-on SOC experience with FortiSIEM, backed by CompTIA Security+, CEH and CSA certifications.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="resume.pdf" download>Download resume ↓</a>
+        <a class="btn" href="#experience">View experience</a>
+        <a class="btn" href="https://www.linkedin.com/in/nadia-ajmal-683a02242" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>1+ yr</b><span>SOC analyst experience</span></div>
+        <div class="stat"><b>5</b><span>industry certifications</span></div>
+        <div class="stat"><b>2</b><span>SIEM platforms</span></div>
+        <div class="stat"><b>4</b><span>languages spoken</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="about reveal">
+    <div class="wrap">
+      <div class="sec-head"><span class="n">01</span><h2>About</h2><span class="rule"></span></div>
+      <p>I'm an IT security professional with a B.Tech in Information Technology. In my day-to-day work as a SOC Analyst I watch security events from many sources, investigate suspicious activity and work with other teams to contain and resolve incidents.</p>
+      <p>Before my current role I interned as a SOC analyst, working with SIEMs, vulnerability scanners and endpoint protection, and I completed a supplementary internship with the Cyber Cell and the Forensic Science Laboratory (FSL) in Alappuzha. I care about protecting critical systems and data, and I enjoy turning what I learn from incidents into better alerts, playbooks and policies.</p>
+      <div class="chips">
+        <span class="chip">Threat Detection</span>
+        <span class="chip">Incident Response</span>
+        <span class="chip">SIEM Monitoring</span>
+        <span class="chip">Log Analysis</span>
+        <span class="chip">Vulnerability Assessment</span>
+        <span class="chip">Network Security</span>
+        <span class="chip">Malware Analysis</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="wrap">
+      <div class="sec-head"><span class="n">02</span><h2>Experience</h2><span class="rule"></span></div>
+      <div class="timeline">
+
+        <div class="job">
+          <div class="when">OCT 2024 — PRESENT</div>
+          <h3>SOC Analyst</h3>
+          <div class="org">Asirvad Microfinance Limited · Thrissur, Kerala</div>
+          <ul>
+            <li>Monitor and analyze security events from diverse sources in FortiSIEM, enabling timely detection and response to incidents.</li>
+            <li>Identify, investigate and respond to potential threats, reducing risk and strengthening the organization's security posture.</li>
+            <li>Work with cross-functional teams to develop and carry out incident response strategies for emerging threats.</li>
+            <li>Maintain and improve detection and alerting rules, strengthening defenses and reducing incident response times.</li>
+            <li>Provide ongoing security analysis and recommendations to improve security measures, policies and processes.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="when">3 MONTHS</div>
+          <h3>SOC Analyst Intern</h3>
+          <div class="org">Blueshell Technologies · Kochi, Kerala</div>
+          <ul>
+            <li>Monitored security logs and alerts, escalating potential incidents.</li>
+            <li>Assisted incident investigations and supported response efforts to mitigate threats.</li>
+            <li>Contributed to cybersecurity documentation and playbooks.</li>
+            <li>Helped configure, fine-tune and optimize security tools and monitoring systems.</li>
+            <li>Researched emerging threats, vulnerabilities and cybersecurity trends to support proactive defense.</li>
+            <li>Gained hands-on experience with SIEMs, vulnerability scanners and endpoint protection solutions.</li>
+            <li>Completed a supplementary internship with the Cyber Cell and Forensic Science Laboratory (FSL), Alappuzha, Kerala.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="wrap">
+      <div class="sec-head"><span class="n">03</span><h2>Technical Skills</h2><span class="rule"></span></div>
+      <div class="skills">
+        <div class="card">
+          <h3>SIEM &amp; Monitoring</h3>
+          <div class="chips">
+            <span class="chip">FortiSIEM</span><span class="chip">Splunk</span>
+            <span class="chip">Security Monitoring</span><span class="chip">Log Analysis</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Security Domains</h3>
+          <div class="chips">
+            <span class="chip">Incident Response</span><span class="chip">Network Security</span>
+            <span class="chip">Vulnerability Assessment</span><span class="chip">Penetration Testing</span>
+            <span class="chip">Malware Analysis</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Systems &amp; Networking</h3>
+          <div class="chips">
+            <span class="chip">Windows Administration</span><span class="chip">Linux Administration</span>
+            <span class="chip">TCP/IP</span><span class="chip">HTTPS</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Scripting</h3>
+          <div class="chips"><span class="chip">JavaScript</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="reveal">
+    <div class="wrap">
+      <div class="sec-head"><span class="n">04</span><h2>Certifications</h2><span class="rule"></span></div>
+      <div class="certs">
+        <div class="cert"><div class="badge">SEC+</div><div><h4>CompTIA Security+</h4><p>COMPTIA · SECURITY FUNDAMENTALS</p></div></div>
+        <div class="cert"><div class="badge">CEH</div><div><h4>Certified Ethical Hacker</h4><p>EC-COUNCIL · OFFENSIVE SECURITY</p></div></div>
+        <div class="cert"><div class="badge">CSA</div><div><h4>Certified SOC Analyst</h4><p>EC-COUNCIL · SOC OPERATIONS</p></div></div>
+        <div class="cert"><div class="badge">FCF</div><div><h4>Fortinet Certified Fundamentals</h4><p>FORTINET · CYBERSECURITY</p></div></div>
+        <div class="cert"><div class="badge">FCA</div><div><h4>Fortinet Certified Associate</h4><p>FORTINET · CYBERSECURITY</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="reveal">
+    <div class="wrap">
+      <div class="sec-head"><span class="n">05</span><h2>Education</h2><span class="rule"></span></div>
+      <div class="edu">
+        <h3>Bachelor of Technology in Information Technology</h3>
+        <p>College of Engineering and Management, Punnapra · Kerala University</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact reveal">
+    <div class="wrap">
+      <div class="prompt" style="margin-bottom:10px">$ ./contact --open</div>
+      <h2>Let's talk security.</h2>
+      <p>I'm open to SOC analyst and security monitoring roles. Reach out by email or connect with me on LinkedIn.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:nadiaajmal1990@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/nadia-ajmal-683a02242" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Thrissur, Kerala, India · Last updated 2026</footer>
+
+<script>
+  // fade-in sections as they scroll into view
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
